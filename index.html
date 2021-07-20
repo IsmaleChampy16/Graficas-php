@@ -1,0 +1,1204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="shortcut icon" href="img/hojachica_interclean.png">
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+<!-- Estilos CSS -->
+<link rel="stylesheet" href="styles.css">
+<!--Ionic Icons-->
+<link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">   
+<!-- Resources -->
+<script src="https://cdn.amcharts.com/lib/4/core.js"></script>
+<script src="https://cdn.amcharts.com/lib/4/charts.js"></script>
+<script src="https://cdn.amcharts.com/lib/4/themes/animated.js"></script>  
+<title>Graficas C&A</title>
+</head>
+    <body>
+        <style>
+        #chartdiv3 {
+        width: 100%;
+        height: 300px;
+        }
+        #chartdiv4 {
+        width: 100%;
+        height: 300px;
+        }
+        #chartdiv5 {
+        width: 100%;
+        height: 300px;
+        }
+        #chartdiv6 {
+        width: 100%;
+        height: 300px;
+        }
+        #chartdiv7 {
+        width: 100%;
+        height: 300px;
+        }
+        #chartdiv8 {
+        width: 100%;
+        height: 300px;
+        }
+        .carousel-control-next, .carousel-control-prev {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            z-index: 1;
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-align: center;
+            align-items: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+            width: 5%;
+            margin: 1rem 1rem 3rem 1rem;
+            border-radius: 2rem;
+            color: #fff !important;
+            text-align: center;
+            opacity: .5;
+            transition: opacity .15s ease;
+            background-color: rgba(0, 0, 0, 0.295);
+        }
+        .carousel-control-next, .carousel-control-prev:hover {
+            background-color: rgba(0, 0, 0, 0.295);
+        }
+        .carousel-inner {
+            position: relative;
+            width: 70%;
+            overflow: hidden;
+            margin-left: 10rem;
+        }
+        </style>
+    <header>
+      <!-- Image and text -->
+      <nav class="navbar  navbar-light fondo-menu">
+        <img width="100%" height="50"  src="img/intercleanlogoblanco.svg">
+    </nav>
+    </header>    
+    <main style="overflow-x: hidden;">        
+        <section>
+            <div class="container" >
+            <div class="card">
+                <div class="card-header">
+                <div class="row justify-content-center">
+                    <h1 class="Bienvenido"> ¡Bienvenido!</h1>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </section>
+        <section id="Grupo-Grafica" style="margin: 1rem; padding: 1rem;">  
+                    <div class="container">
+                        <div class="card">
+                            <div class="card-header">Administrador de encuestas C&A</div>
+                            <div class="card-body">
+                                <div class="container-fluid">
+                                    <div class="row">
+                                        <div class="col-lg-4 offset-1">
+                                            <form action="">
+                                                <div class="form-group">
+                                                <label for="Mes_Seleccion">Seleccione una pregunta</label>
+                                                <select class="form-control form-control-lg" id = "preg" aria-placeholder="Eliga la pregunta">
+                                                        <option value="p1a">1.- Señale en cada una de estos aspectos la calidad de acuerdo a la escala./PRESENTACIÓN(UNIFORME-EPP)</option>
+                                                        <option value="p1b">1.- Señale en cada una de estos aspectos la calidad de acuerdo a la escala./CAPACITACIÓN</option>
+                                                        <option value="p1c">1.- Señale en cada una de estos aspectos la calidad de acuerdo a la escala./INSUMOS</option>
+                                                        <option value="p1d">1.- Señale en cada una de estos aspectos la calidad de acuerdo a la escala./ASISTENCIA</option>
+                                                        <option value="p1e">1.- Señale en cada una de estos aspectos la calidad de acuerdo a la escala./ROTACIÓN</option>
+                                                        <option value="p2">2.- ¿Como considera el desempeño del personal en tienda?</option>
+                                                        <option value="p3">3.- ¿Las actividades son realizadas en tiempo y forma por el personal en tienda?</option>
+                                                        <option value="p4">4.- De los siguientes incisos cuál crees que sea el área de oportunidad por parte del Supervisor</option>
+                                                        <option value="p5">5.- De estas tres áreas, comente la mejora que usted considere:</option>
+                                                        <option value="p6">6.- ¿Como considera la calidad de la limpieza?</option> 
+                                                        
+                                                    </select>
+                                                   
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <div class="col-lg-6" style="margin-top: 3%;">
+                                            <button class="btn btn-primary" style="display: none;" id = "btn1a" onclick="ConsultaDatosPreguntap1a()">
+                                                    Graficar
+                                            </button>
+                                            <button class="btn btn-primary" style="display: none;" id = "btn1b" onclick="ConsultaDatosPreguntap1b()">
+                                                    Graficar
+                                            </button>
+                                            <button class="btn btn-primary" style="display: none;" id = "btn1c" onclick="ConsultaDatosPreguntap1c()">
+                                                    Graficar
+                                            </button>
+                                            <button class="btn btn-primary" style="display: none;" id = "btn1d" onclick="ConsultaDatosPreguntap1d()">
+                                                    Graficar
+                                            </button>
+                                            <button class="btn btn-primary" style="display: none;" id = "btn1e" onclick="ConsultaDatosPreguntap1e()">
+                                                    Graficar
+                                            </button>
+                                            <button class="btn btn-primary" style="display: none;" id = "btn2" onclick="ConsultaDatosPregunta2()">
+                                                    Graficar
+                                            </button>
+                                            <button class="btn btn-primary" style="display: none;" id = "btn3" onclick="ConsultaDatosPregunta3()">
+                                                    Graficar 
+                                            </button>
+                                            <button class="btn btn-primary" style="display: none;" id = "btn4" onclick="ConsultaDatosPregunta4()">
+                                                    Graficar 
+                                            </button>
+                                            <button class="btn btn-primary" style="display: none;" id = "btn5" onclick="ConsultaDatosPregunta5()">
+                                                    Graficar
+                                            </button>
+                                            <button class="btn btn-primary" style="display: none;" id = "btn6" onclick="ConsultaDatosPregunta6()">
+                                                    Graficar
+                                            </button>
+                                          
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="container-fluid">
+                                    <div class="row justify-content-center">
+                                        <div class="col-lg-12">
+                                                <h4>Graficacion:</h4>
+                                          <!-- Grafica carousel-->
+                                          <div class="card-body" id = "zoneGraf">
+                                                 <canvas id="myChart" width="auto" height="200"></canvas>
+                                         </div>                                 
+                                          <!-- Grafica carousel-->
+                                        </div>
+                                    </div>
+                                </div>                                
+                            </div>
+                        </div>
+                    </div>
+        </section>
+        <section id="Grupo-Tabla" style="margin: 1rem; padding: 1rem;" >
+            <div class="container">
+                <div class="card margen">
+                    <div class="card-header">Tabla de Usuarios encuestados</div>
+                    <div class="card-body">
+                        <h5 class="card-title">Respuestas generales de usuarios</h5>
+                            <form action="" method="post">
+                                <div class="form-group">
+                                    <label for="buscar">Buscar:</label>
+                                    <input type="text" name="buscar" id="buscar" placeholder="Buscar por nombre" class="form-control">
+                                </div>
+                            </form>                            
+                            <div style="max-height: 60vh; overflow-y: scroll;">
+                                <table class="table table-hover table-responsive-lg table-sm">
+                                    <thead class="thead-dark">
+                                        <tr>
+                                            <th>Nombre</th>
+                                            <th>Apellido Paterno</th>
+                                            <th>Apellido Materno</th>
+                                            <th>Número de contacto</th>
+                                            <th>Email</th>
+                                            <th>Fecha &nbsp;&nbsp; - &nbsp; &nbsp; Hora</th>
+                                            <th>Tienda</th>
+                                            <th>Estado</th>
+                                            <th>Puesto</th>
+                                            <th>PRESENTACIÓN(UNIFORME-EPP)</th>
+                                            <th>CAPACITACIÓN</th>
+                                            <th>INSUMOS</th>
+                                            <th>ASISTENCIA</th>
+                                            <th>ROTACIÓN</th>
+                                            <th>P2</th>
+                                            <th>¿Por qué?</th>
+                                            <th>P3</th>
+                                            <th>¿Por qué?</th>
+                                            <th>P4</th>
+                                            <th>¿Por qué?</th>
+                                            <th>P5</th>
+                                            <th>¿Por qué?</th>
+                                            <th>P6</th>
+                                        </tr>
+                                    </thead>
+                                    
+                                    <tbody id="resultado">
+                                    </tbody>
+                                </table>
+                            </div>
+                    </div>
+                </div>                
+            </div>    
+        </section>
+        <section>
+            <footer>
+                    <div style="margin-top: 5rem;">
+                        <div class="row justify-content-center">
+                            <div class="col text-center">
+                                <nav class="navbar navbar-light bg-light fondo-menu">
+                                    <a class="navbar-brand mx-auto" style="color: white; font-weight: bolder;">Interclean - Graphics power by Chart.js</a>
+                                  </nav>
+
+                            </div>
+                        </div>
+                    </div>
+            </footer>
+        </section>
+    </main>
+      <!-- Sweeet Alert -->
+      
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.min.js" integrity="sha512-vBmx0N/uQOXznm/Nbkp7h0P1RfLSj0HQrFSzV8m7rOGyj30fYAOKHYvCNez+yM8IrfnW0TCodDEjRqf6fodf/Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js" integrity="sha512-s+xg36jbIujB2S2VKfpGmlC3T5V2TF3lY48DX7u2r9XzGzgPsa6wTpOQA7J9iffvdeBN0q9tKzRxVxw1JviZPg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+      <!-- Script de Llamados-->
+<script src="script.js"></script> 
+      <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->  
+      <script>
+        $("#preg").change(function() {
+            var el = $(this);
+         
+            
+            if( el.val() === "p2") {
+                $("#btn2").show();
+                $("#btn6").hide();
+                $("#btn5").hide(); 
+                $("#btn4").hide(); 
+                $("#btn3").hide(); 
+                $("#btn1").hide();  
+                $("#btn1a").hide();
+                $("#btn1b").hide();
+                $("#btn1c").hide();
+                $("#btn1d").hide();
+                $("#btn1e").hide();
+            } 
+            else if( el.val() === "p3") {
+                $("#btn3").show();
+                $("#btn6").hide();
+                $("#btn5").hide(); 
+                $("#btn4").hide(); 
+                $("#btn2").hide();    
+                $("#btn1").hide();
+                $("#btn1a").hide();
+                $("#btn1b").hide();
+                $("#btn1c").hide();
+                $("#btn1d").hide();
+                $("#btn1e").hide();
+            } 
+            else if(el.val() === "p4"){
+                $("#btn4").show();
+                $("#btn6").hide();
+                $("#btn5").hide(); 
+                $("#btn3").hide();
+                $("#btn2").hide();
+                $("#btn1").hide();
+                $("#btn1a").hide();
+                $("#btn1b").hide();
+                $("#btn1c").hide();
+                $("#btn1d").hide();
+                $("#btn1e").hide();
+            }
+            else if(el.val() === "p5"){
+                $("#btn5").show();
+                $("#btn6").hide();
+                $("#btn4").hide();
+                $("#btn3").hide();
+                $("#btn2").hide();
+                $("#btn1").hide();
+                $("#btn1a").hide();
+                $("#btn1b").hide();
+                $("#btn1c").hide();
+                $("#btn1d").hide();
+                $("#btn1e").hide();
+                
+            } 
+             else if(el.val() === "p6"){
+                $("#btn6").show();
+                $("#btn5").hide()
+                $("#btn4").hide();
+                $("#btn3").hide();
+                $("#btn2").hide();
+                $("#btn1").hide();
+                $("#btn1a").hide();
+                $("#btn1b").hide();
+                $("#btn1c").hide();
+                $("#btn1d").hide();
+                $("#btn1e").hide();
+                
+            } 
+            //P1A
+            else if( el.val() === "p1a") {
+                $("#btn1a").show();
+                $("#btn6").hide();
+                $("#btn5").hide(); 
+                $("#btn4").hide(); 
+                $("#btn3").hide(); 
+                $("#btn2").hide();
+                $("#btn1").hide(); 
+                $("#btn1b").hide();
+                $("#btn1c").hide();
+                $("#btn1d").hide();
+                $("#btn1e").hide();
+            }
+            else if( el.val() === "p1b") {
+                $("#btn1b").show();
+                $("#btn6").hide();
+                $("#btn5").hide(); 
+                $("#btn4").hide(); 
+                $("#btn3").hide(); 
+                $("#btn2").hide();
+                $("#btn1").hide();   
+                $("#btn1a").hide();
+                $("#btn1c").hide();
+                $("#btn1d").hide();
+                $("#btn1e").hide();
+            }
+            
+             else if( el.val() === "p1c") {
+                $("#btn1c").show();
+                $("#btn6").hide();
+                $("#btn5").hide(); 
+                $("#btn4").hide(); 
+                $("#btn3").hide(); 
+                $("#btn2").hide();
+                $("#btn1").hide();   
+                $("#btn1a").hide();
+                $("#btn1b").hide();
+                $("#btn1d").hide();
+                $("#btn1e").hide();
+            }
+            
+            else if( el.val() === "p1d") {
+                $("#btn1d").show();
+                $("#btn6").hide();
+                $("#btn5").hide(); 
+                $("#btn4").hide(); 
+                $("#btn3").hide(); 
+                $("#btn2").hide();
+                $("#btn1").hide();   
+                $("#btn1a").hide();
+                $("#btn1b").hide();
+                $("#btn1c").hide();
+                $("#btn1e").hide();
+               
+            }
+            
+             else if( el.val() === "p1e") {
+                $("#btn1e").show();
+                $("#btn6").hide();
+                $("#btn5").hide(); 
+                $("#btn4").hide(); 
+                $("#btn3").hide(); 
+                $("#btn2").hide();
+                $("#btn1").hide();   
+                $("#btn1a").hide();
+                $("#btn1b").hide();
+                $("#btn1c").hide();
+                
+               
+            }
+            
+            else {
+                $("#btn1").hide();
+                $("#btn2").hide();
+                
+            }
+        });    
+    </script>
+    
+    <script>
+         function ConsultaDatosPreguntap1a() {
+            preg= $('#preg').val(); // Cogemos del formulario el valor nom
+           
+            $.ajax({
+                    url: './controller/PreguntCAController.php',
+                type: 'POST',
+                data: { 
+                        preg: preg
+                    }
+            }).done(function(resp) {        
+              console.log(resp);
+              var titulo = ['Excelente','Bueno','Regular','Malo'];
+                var cantidad = [];
+                var data2 = JSON.parse(resp);
+                //console.log(resp);
+                console.log(data2);
+                /*extraer uno a uno los elementos del objeto
+                    meterlos en un arreglo simple
+                */
+                    //declarar array
+                    var datofinal = "";
+                    var datofinal = new Array();
+                    for(i in data2)
+                     /*buscar los valores en variables*/                      
+                     //declarando en variables.                 
+                      var r1 =  data2[i].TOTAL5
+                      var r2 =  data2[i].TOTAL4      
+                      var r3 =  data2[i].TOTAL3
+                      var r4 =  data2[i].TOTAL2  
+                      var r5 =  data2[i].TOTAL1  
+                  
+                     // 
+                    console.log(r1);        
+                    console.log(r2); 
+                    console.log(r3);                   
+                    datofinal.push(r1,r2,r3,r4,r5);
+                    console.log(datofinal);                
+                $("#myChart").remove();
+                $("#zoneGraf").append('<canvas id="myChart" width="auto" height="200"></canvas>');                
+                var ctx = document.getElementById('myChart');                
+                var myChart = new Chart(ctx, {
+                    //pie
+                    type: 'pie',
+                    data: {
+                        labels: ['1','2','3','4','5'],
+                        datasets: [{
+                            label: ['1','2','3','4','5'],
+                            data: datofinal,
+                            backgroundColor: [
+                                'rgba(255, 99, 132, 0.2)',
+                                'rgba(54, 162, 235, 0.2)',
+                                'rgba(255, 206, 86, 0.2)',
+                                'rgba(75, 192, 192, 0.2)',
+                                'rgba(153, 102, 255, 0.2)',
+                                'rgba(255, 159, 64, 0.2)'
+                            ],
+                            borderColor: [
+                                'rgba(255, 99, 132, 1)',
+                                'rgba(54, 162, 235, 1)',
+                                'rgba(255, 206, 86, 1)',
+                                'rgba(75, 192, 192, 1)',
+                                'rgba(153, 102, 255, 1)',
+                                'rgba(255, 159, 64, 1)'
+                            ],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+            })
+        }
+    </script> 
+    
+    <script>
+         function ConsultaDatosPreguntap1b() {
+            preg= $('#preg').val(); // Cogemos del formulario el valor nom
+           
+            $.ajax({
+                    url: './controller/PreguntCAController.php',
+                type: 'POST',
+                data: { 
+                        preg: preg
+                    }
+            }).done(function(resp) {        
+              console.log(resp);
+              var titulo = ['Excelente','Bueno','Regular','Malo'];
+                var cantidad = [];
+                var data2 = JSON.parse(resp);
+                //console.log(resp);
+                console.log(data2);
+                /*extraer uno a uno los elementos del objeto
+                    meterlos en un arreglo simple
+                */
+                    //declarar array
+                    var datofinal = "";
+                    var datofinal = new Array();
+                    for(i in data2)
+                     /*buscar los valores en variables*/                      
+                     //declarando en variables.                 
+                      var r1 =  data2[i].TOTAL5
+                      var r2 =  data2[i].TOTAL4      
+                      var r3 =  data2[i].TOTAL3
+                      var r4 =  data2[i].TOTAL2  
+                      var r5 =  data2[i].TOTAL1  
+                  
+                     // 
+                    console.log(r1);        
+                    console.log(r2); 
+                    console.log(r3);                   
+                    datofinal.push(r1,r2,r3,r4,r5);
+                    console.log(datofinal);                
+                $("#myChart").remove();
+                $("#zoneGraf").append('<canvas id="myChart" width="auto" height="200"></canvas>');                
+                var ctx = document.getElementById('myChart');                
+                var myChart = new Chart(ctx, {
+                    //pie
+                    type: 'pie',
+                    data: {
+                        labels: ['1','2','3','4','5'],
+                        datasets: [{
+                            label: ['1','2','3','4','5'],
+                            data: datofinal,
+                            backgroundColor: [
+                                'rgba(255, 99, 132, 0.2)',
+                                'rgba(54, 162, 235, 0.2)',
+                                'rgba(255, 206, 86, 0.2)',
+                                'rgba(75, 192, 192, 0.2)',
+                                'rgba(153, 102, 255, 0.2)',
+                                'rgba(255, 159, 64, 0.2)'
+                            ],
+                            borderColor: [
+                                'rgba(255, 99, 132, 1)',
+                                'rgba(54, 162, 235, 1)',
+                                'rgba(255, 206, 86, 1)',
+                                'rgba(75, 192, 192, 1)',
+                                'rgba(153, 102, 255, 1)',
+                                'rgba(255, 159, 64, 1)'
+                            ],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+            })
+        }
+    </script> 
+    
+    <script>
+         function ConsultaDatosPreguntap1c() {
+            preg= $('#preg').val(); // Cogemos del formulario el valor nom
+           
+            $.ajax({
+                    url: './controller/PreguntCAController.php',
+                type: 'POST',
+                data: { 
+                        preg: preg
+                    }
+            }).done(function(resp) {        
+              console.log(resp);
+              var titulo = ['Excelente','Bueno','Regular','Malo'];
+                var cantidad = [];
+                var data2 = JSON.parse(resp);
+                //console.log(resp);
+                console.log(data2);
+                /*extraer uno a uno los elementos del objeto
+                    meterlos en un arreglo simple
+                */
+                    //declarar array
+                    var datofinal = "";
+                    var datofinal = new Array();
+                    for(i in data2)
+                     /*buscar los valores en variables*/                      
+                     //declarando en variables.                 
+                      var r1 =  data2[i].TOTAL5
+                      var r2 =  data2[i].TOTAL4      
+                      var r3 =  data2[i].TOTAL3
+                      var r4 =  data2[i].TOTAL2  
+                      var r5 =  data2[i].TOTAL1  
+                  
+                     // 
+                    console.log(r1);        
+                    console.log(r2); 
+                    console.log(r3);                   
+                    datofinal.push(r1,r2,r3,r4,r5);
+                    console.log(datofinal);                
+                $("#myChart").remove();
+                $("#zoneGraf").append('<canvas id="myChart" width="auto" height="200"></canvas>');                
+                var ctx = document.getElementById('myChart');                
+                var myChart = new Chart(ctx, {
+                    //pie
+                    type: 'pie',
+                    data: {
+                        labels: ['1','2','3','4','5'],
+                        datasets: [{
+                            label: ['1','2','3','4','5'],
+                            data: datofinal,
+                            backgroundColor: [
+                                'rgba(255, 99, 132, 0.2)',
+                                'rgba(54, 162, 235, 0.2)',
+                                'rgba(255, 206, 86, 0.2)',
+                                'rgba(75, 192, 192, 0.2)',
+                                'rgba(153, 102, 255, 0.2)',
+                                'rgba(255, 159, 64, 0.2)'
+                            ],
+                            borderColor: [
+                                'rgba(255, 99, 132, 1)',
+                                'rgba(54, 162, 235, 1)',
+                                'rgba(255, 206, 86, 1)',
+                                'rgba(75, 192, 192, 1)',
+                                'rgba(153, 102, 255, 1)',
+                                'rgba(255, 159, 64, 1)'
+                            ],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+            })
+        }
+    </script> 
+    
+    <script>
+         function ConsultaDatosPreguntap1d() {
+            preg= $('#preg').val(); // Cogemos del formulario el valor nom
+           
+            $.ajax({
+                    url: './controller/PreguntCAController.php',
+                type: 'POST',
+                data: { 
+                        preg: preg
+                    }
+            }).done(function(resp) {        
+              console.log(resp);
+              var titulo = ['Excelente','Bueno','Regular','Malo'];
+                var cantidad = [];
+                var data2 = JSON.parse(resp);
+                //console.log(resp);
+                console.log(data2);
+                /*extraer uno a uno los elementos del objeto
+                    meterlos en un arreglo simple
+                */
+                    //declarar array
+                    var datofinal = "";
+                    var datofinal = new Array();
+                    for(i in data2)
+                     /*buscar los valores en variables*/                      
+                     //declarando en variables.                 
+                      var r1 =  data2[i].TOTAL5
+                      var r2 =  data2[i].TOTAL4      
+                      var r3 =  data2[i].TOTAL3
+                      var r4 =  data2[i].TOTAL2  
+                      var r5 =  data2[i].TOTAL1  
+                  
+                     // 
+                    console.log(r1);        
+                    console.log(r2); 
+                    console.log(r3);                   
+                    datofinal.push(r1,r2,r3,r4,r5);
+                    console.log(datofinal);                
+                $("#myChart").remove();
+                $("#zoneGraf").append('<canvas id="myChart" width="auto" height="200"></canvas>');                
+                var ctx = document.getElementById('myChart');                
+                var myChart = new Chart(ctx, {
+                    //pie
+                    type: 'pie',
+                    data: {
+                        labels: ['1','2','3','4','5'],
+                        datasets: [{
+                            label: ['1','2','3','4','5'],
+                            data: datofinal,
+                            backgroundColor: [
+                                'rgba(255, 99, 132, 0.2)',
+                                'rgba(54, 162, 235, 0.2)',
+                                'rgba(255, 206, 86, 0.2)',
+                                'rgba(75, 192, 192, 0.2)',
+                                'rgba(153, 102, 255, 0.2)',
+                                'rgba(255, 159, 64, 0.2)'
+                            ],
+                            borderColor: [
+                                'rgba(255, 99, 132, 1)',
+                                'rgba(54, 162, 235, 1)',
+                                'rgba(255, 206, 86, 1)',
+                                'rgba(75, 192, 192, 1)',
+                                'rgba(153, 102, 255, 1)',
+                                'rgba(255, 159, 64, 1)'
+                            ],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+            })
+        }
+    </script> 
+    
+    <script>
+         function ConsultaDatosPreguntap1e() {
+            preg= $('#preg').val(); // Cogemos del formulario el valor nom
+           
+            $.ajax({
+                    url: './controller/PreguntCAController.php',
+                type: 'POST',
+                data: { 
+                        preg: preg
+                    }
+            }).done(function(resp) {        
+              console.log(resp);
+              var titulo = ['Excelente','Bueno','Regular','Malo'];
+                var cantidad = [];
+                var data2 = JSON.parse(resp);
+                //console.log(resp);
+                console.log(data2);
+                /*extraer uno a uno los elementos del objeto
+                    meterlos en un arreglo simple
+                */
+                    //declarar array
+                    var datofinal = "";
+                    var datofinal = new Array();
+                    for(i in data2)
+                     /*buscar los valores en variables*/                      
+                     //declarando en variables.                 
+                      var r1 =  data2[i].TOTAL5
+                      var r2 =  data2[i].TOTAL4      
+                      var r3 =  data2[i].TOTAL3
+                      var r4 =  data2[i].TOTAL2  
+                      var r5 =  data2[i].TOTAL1  
+                  
+                     // 
+                    console.log(r1);        
+                    console.log(r2); 
+                    console.log(r3);                   
+                    datofinal.push(r1,r2,r3,r4,r5);
+                    console.log(datofinal);                
+                $("#myChart").remove();
+                $("#zoneGraf").append('<canvas id="myChart" width="auto" height="200"></canvas>');                
+                var ctx = document.getElementById('myChart');                
+                var myChart = new Chart(ctx, {
+                    //pie
+                    type: 'pie',
+                    data: {
+                        labels: ['1','2','3','4','5'],
+                        datasets: [{
+                            label: ['1','2','3','4','5'],
+                            data: datofinal,
+                            backgroundColor: [
+                                'rgba(255, 99, 132, 0.2)',
+                                'rgba(54, 162, 235, 0.2)',
+                                'rgba(255, 206, 86, 0.2)',
+                                'rgba(75, 192, 192, 0.2)',
+                                'rgba(153, 102, 255, 0.2)',
+                                'rgba(255, 159, 64, 0.2)'
+                            ],
+                            borderColor: [
+                                'rgba(255, 99, 132, 1)',
+                                'rgba(54, 162, 235, 1)',
+                                'rgba(255, 206, 86, 1)',
+                                'rgba(75, 192, 192, 1)',
+                                'rgba(153, 102, 255, 1)',
+                                'rgba(255, 159, 64, 1)'
+                            ],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+            })
+        }
+    </script> 
+    
+    <script>
+         function ConsultaDatosPregunta2() {
+            preg= $('#preg').val(); // Cogemos del formulario el valor nom
+           
+            $.ajax({
+                    url: './controller/PreguntCAController.php',
+                type: 'POST',
+                data: { 
+                        preg: preg
+                    }
+            }).done(function(resp) {        
+              console.log(resp);
+              var titulo = ['Excelente','Bueno','Regular','Malo'];
+                var cantidad = [];
+                var data2 = JSON.parse(resp);
+                //console.log(resp);
+                console.log(data2);
+                /*extraer uno a uno los elementos del objeto
+                    meterlos en un arreglo simple
+                */
+                    //declarar array
+                    var datofinal = "";
+                    var datofinal = new Array();
+                    for(i in data2)
+                     /*buscar los valores en variables*/                      
+                     //declarando en variables.                 
+                      var r1 =  data2[i].TOTALEXCELENTE
+                      var r2 =  data2[i].TOTALBUENO      
+                      var r3 =  data2[i].TOTALDEFICIENTE
+                  
+                     // 
+                    console.log(r1);        
+                    console.log(r2); 
+                    console.log(r3);                   
+                    datofinal.push(r1,r2,r3);
+                    console.log(datofinal);                
+                $("#myChart").remove();
+                $("#zoneGraf").append('<canvas id="myChart" width="auto" height="200"></canvas>');                
+                var ctx = document.getElementById('myChart');                
+                var myChart = new Chart(ctx, {
+                    //pie
+                    type: 'pie',
+                    data: {
+                        labels: ['Excelente','Bueno','Regular'],
+                        datasets: [{
+                            label: ['Excelente','Bueno','Regular'],
+                            data: datofinal,
+                            backgroundColor: [
+                                'rgba(255, 99, 132, 0.2)',
+                                'rgba(54, 162, 235, 0.2)',
+                                'rgba(255, 206, 86, 0.2)',
+                                'rgba(75, 192, 192, 0.2)',
+                                'rgba(153, 102, 255, 0.2)',
+                                'rgba(255, 159, 64, 0.2)'
+                            ],
+                            borderColor: [
+                                'rgba(255, 99, 132, 1)',
+                                'rgba(54, 162, 235, 1)',
+                                'rgba(255, 206, 86, 1)',
+                                'rgba(75, 192, 192, 1)',
+                                'rgba(153, 102, 255, 1)',
+                                'rgba(255, 159, 64, 1)'
+                            ],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+            })
+        }
+    </script> 
+    <script>
+         function ConsultaDatosPregunta3() {
+            preg= $('#preg').val(); // Cogemos del formulario el valor nom
+           
+            $.ajax({
+                    url: './controller/PreguntCAController.php',
+                type: 'POST',
+                data: { 
+                        preg: preg
+                    }
+            }).done(function(resp) {        
+              console.log(resp);
+              var titulo = ['Excelente','Bueno','Regular','Malo'];
+                var cantidad = [];                     
+                var data2 = JSON.parse(resp);
+                console.log(data2);
+                /*extraer uno a uno los elementos del objeto
+                    meterlos en un arreglo simple
+                */
+                    //declarar array
+                    var datofinal = "";
+                    var datofinal = new Array();                    
+                    for(i in data2)
+                     /*buscar los valores en variables*/                      
+                    //declarando en variables.                 
+                      var r1 =  data2[i].TOTALSIEMPRE
+                      var r2 =  data2[i].TOTALOCASIONALMENTE      
+                      var r3 =  data2[i].TOTALAVECES
+                      var r4 =  data2[i].TOTALNUNCA
+                      
+                     // 
+                    console.log(r1);        
+                    console.log(r2); 
+                    console.log(r3); 
+                    console.log(r4); 
+                    
+                    datofinal.push(r1,r2,r3,r4);
+                
+                $("#myChart").remove();
+                $("#zoneGraf").append('<canvas id="myChart" width="auto" height="200"></canvas>');        
+                
+                var ctx = document.getElementById('myChart');
+                
+                var myChart = new Chart(ctx, {
+                    //pie
+                    type: 'pie',
+                    data: {
+                        labels: ['Siempre','Ocasionalmente', 'A veces', 'Nunca'],
+                        datasets: [{
+                            label: ['SI','NO'],
+                            data: datofinal,
+                            backgroundColor: [
+                                'rgba(255, 99, 132, 0.2)',
+                                'rgba(54, 162, 235, 0.2)',
+                                'rgba(255, 206, 86, 0.2)',
+                                'rgba(75, 192, 192, 0.2)',
+                                'rgba(153, 102, 255, 0.2)',
+                                'rgba(255, 159, 64, 0.2)'
+                            ],
+                            borderColor: [
+                                'rgba(255, 99, 132, 1)',
+                                'rgba(54, 162, 235, 1)',
+                                'rgba(255, 206, 86, 1)',
+                                'rgba(75, 192, 192, 1)',
+                                'rgba(153, 102, 255, 1)',
+                                'rgba(255, 159, 64, 1)'
+                            ],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+            })
+        }
+    </script> 
+    <script>
+         function ConsultaDatosPregunta4() {
+            preg= $('#preg').val(); // Cogemos del formulario el valor nom
+           
+            $.ajax({
+                    url: './controller/PreguntCAController.php',
+                type: 'POST',
+                data: { 
+                        preg: preg
+                    }
+            }).done(function(resp) {        
+              console.log(resp);
+              var titulo = ['Excelente','Bueno','Regular','Malo'];
+                var cantidad = [];                     
+                var data2 = JSON.parse(resp);
+                console.log(data2);
+                /*extraer uno a uno los elementos del objeto
+                    meterlos en un arreglo simple
+                */
+                    //declarar array
+                    var datofinal = "";
+                    var datofinal = new Array();                    
+                    for(i in data2)
+                     /*buscar los valores en variables*/                      
+                    //declarando en variables.                 
+                      var r1 =  data2[i].TOTALCOMUNICACIONCONGERENCIA
+                      var r2 =  data2[i].TOTALSEGUIMIENTO      
+                      var r3 =  data2[i].TOTALCONTROLDEINSUMOS
+                      
+                     // 
+                    console.log(r1);        
+                    console.log(r2); 
+                    console.log(r3);
+                    
+                    datofinal.push(r1,r2,r3);
+                
+                $("#myChart").remove();
+                $("#zoneGraf").append('<canvas id="myChart" width="auto" height="200"></canvas>');        
+                
+                var ctx = document.getElementById('myChart');
+                
+                var myChart = new Chart(ctx, {
+                    //pie
+                    type: 'pie',
+                    data: {
+                        labels: ['Comunicación con gerencia','Seguimiento', 'Control de insumos'],
+                        datasets: [{
+                            label: ['Comunicación con gerencia','Seguimiento', 'Control de insumos'],
+                            data: datofinal,
+                            backgroundColor: [
+                                'rgba(255, 99, 132, 0.2)',
+                                'rgba(54, 162, 235, 0.2)',
+                                'rgba(255, 206, 86, 0.2)',
+                                'rgba(75, 192, 192, 0.2)',
+                                'rgba(153, 102, 255, 0.2)',
+                                'rgba(255, 159, 64, 0.2)'
+                            ],
+                            borderColor: [
+                                'rgba(255, 99, 132, 1)',
+                                'rgba(54, 162, 235, 1)',
+                                'rgba(255, 206, 86, 1)',
+                                'rgba(75, 192, 192, 1)',
+                                'rgba(153, 102, 255, 1)',
+                                'rgba(255, 159, 64, 1)'
+                            ],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+            })
+        }
+    </script>
+    <script>
+         function ConsultaDatosPregunta5() {
+            preg= $('#preg').val(); // Cogemos del formulario el valor nom
+           
+            $.ajax({
+                    url: './controller/PreguntCAController.php',
+                type: 'POST',
+                data: { 
+                        preg: preg
+                    }
+            }).done(function(resp) {        
+              console.log(resp);
+              var titulo = ['Excelente','Bueno','Regular','Malo'];
+                var cantidad = [];                     
+                var data2 = JSON.parse(resp);
+                console.log(data2);
+                /*extraer uno a uno los elementos del objeto
+                    meterlos en un arreglo simple
+                */
+                    //declarar array
+                    var datofinal = "";
+                    var datofinal = new Array();                    
+                    for(i in data2)
+                     /*buscar los valores en variables*/                      
+                    //declarando en variables.                 
+                      var r1 =  data2[i].TOTALSERVICIO
+                      var r2 =  data2[i].TOTALSUPERVISION      
+                      var r3 =  data2[i].TOTALPERSONALTIENDA
+                      
+                     // 
+                    console.log(r1);        
+                    console.log(r2); 
+                    console.log(r3);
+                    
+                    datofinal.push(r1,r2,r3);
+                
+                $("#myChart").remove();
+                $("#zoneGraf").append('<canvas id="myChart" width="auto" height="200"></canvas>');        
+                
+                var ctx = document.getElementById('myChart');
+                
+                var myChart = new Chart(ctx, {
+                    //pie
+                    type: 'pie',
+                    data: {
+                        labels: ['Servicio','Supervisión', 'Personal en tienda'],
+                        datasets: [{
+                            label: ['Servicio','Supervisión', 'Personal en tienda'],
+                            data: datofinal,
+                            backgroundColor: [
+                                'rgba(255, 99, 132, 0.2)',
+                                'rgba(54, 162, 235, 0.2)',
+                                'rgba(255, 206, 86, 0.2)',
+                                'rgba(75, 192, 192, 0.2)',
+                                'rgba(153, 102, 255, 0.2)',
+                                'rgba(255, 159, 64, 0.2)'
+                            ],
+                            borderColor: [
+                                'rgba(255, 99, 132, 1)',
+                                'rgba(54, 162, 235, 1)',
+                                'rgba(255, 206, 86, 1)',
+                                'rgba(75, 192, 192, 1)',
+                                'rgba(153, 102, 255, 1)',
+                                'rgba(255, 159, 64, 1)'
+                            ],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+            })
+        }
+    </script>
+    <script>
+         function ConsultaDatosPregunta6() {
+            preg= $('#preg').val(); // Cogemos del formulario el valor nom
+           
+            $.ajax({
+                    url: './controller/PreguntCAController.php',
+                type: 'POST',
+                data: { 
+                        preg: preg
+                    }
+            }).done(function(resp) {        
+              console.log(resp);
+              var titulo = ['Excelente','Bueno','Regular','Malo'];
+                var cantidad = [];                     
+                var data2 = JSON.parse(resp);
+                console.log(data2);
+                /*extraer uno a uno los elementos del objeto
+                    meterlos en un arreglo simple
+                */
+                    //declarar array
+                    var datofinal = "";
+                    var datofinal = new Array();                    
+                    for(i in data2)
+                     /*buscar los valores en variables*/                      
+                    //declarando en variables.                 
+                      var r1 =  data2[i].TOTALMUYBAJACALIDAD
+                      var r2 =  data2[i].TOTALBAJACALIDAD      
+                      var r3 =  data2[i].TOTALBUENACALIDAD
+                      var r4 =  data2[i].TOTALNORMAL
+                      
+                     // 
+                    console.log(r1);        
+                    console.log(r2); 
+                    console.log(r3);
+                    console.log(r4);
+                    
+                    datofinal.push(r1,r2,r3,r4);
+                
+                $("#myChart").remove();
+                $("#zoneGraf").append('<canvas id="myChart" width="auto" height="200"></canvas>');        
+                
+                var ctx = document.getElementById('myChart');
+                
+                var myChart = new Chart(ctx, {
+                    //pie
+                    type: 'pie',
+                    data: {
+                        labels: ['Muy baja calidad','Baja calidad', 'Buena calidad', 'Normal'],
+                        datasets: [{
+                            label: ['Muy baja calidad','Baja calidad', 'Buena calidad', 'Normal'],
+                            data: datofinal,
+                            backgroundColor: [
+                                'rgba(255, 99, 132, 0.2)',
+                                'rgba(54, 162, 235, 0.2)',
+                                'rgba(255, 206, 86, 0.2)',
+                                'rgba(75, 192, 192, 0.2)',
+                                'rgba(153, 102, 255, 0.2)',
+                                'rgba(255, 159, 64, 0.2)'
+                            ],
+                            borderColor: [
+                                'rgba(255, 99, 132, 1)',
+                                'rgba(54, 162, 235, 1)',
+                                'rgba(255, 206, 86, 1)',
+                                'rgba(75, 192, 192, 1)',
+                                'rgba(153, 102, 255, 1)',
+                                'rgba(255, 159, 64, 1)'
+                            ],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+            })
+        }
+    </script>
+    
+    
+    
+    
+    
+</body>
+</html>
